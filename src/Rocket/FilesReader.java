@@ -202,7 +202,7 @@ public class FilesReader {
 				}
 			}
 
-			String string = (Settings.ratiokill+1)+"\n"+Settings.moddeltav+"\n"+Settings.modcost+"\n"+Settings.modtwr+"\n"+Settings.mintwr+"\n"+Settings.maxtwr+"\n"+Settings.payload+"\n"+Settings.nbpop+"\n"+Settings.nbmut+"\n"+Settings.nbmaxft+"\n"+Settings.nbmaxstages+"\n"+Settings.nbgen+"\n"+Settings.mindv+"\n"+Settings.maxdv+"\n"+Settings.mincost+"\n"+Settings.maxcost;
+			String string = Settings.ratiokill+"\n"+Settings.moddeltav+"\n"+Settings.modcost+"\n"+Settings.modtwr+"\n"+Settings.mintwr+"\n"+Settings.maxtwr+"\n"+Settings.payload+"\n"+Settings.nbpop+"\n"+Settings.nbmut+"\n"+Settings.nbmaxft+"\n"+Settings.nbmaxstages+"\n"+Settings.nbgen+"\n"+Settings.mindv+"\n"+Settings.maxdv+"\n"+Settings.mincost+"\n"+Settings.maxcost;
 			//créé le fichier
 			Files.write(path, string.getBytes(), StandardOpenOption.CREATE);
 		}
