@@ -23,7 +23,7 @@ public class Rocket {
 			val.append("\nstage=").append(stage.toString());
 		return "Rocket{" +
 				val +
-				'}';
+				"\n}";
 	}
 
 	public void randomize(){
