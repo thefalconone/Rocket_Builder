@@ -18,5 +18,6 @@ public class MainWindow extends JFrame{
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);*/
 		FilesReader.readAllData();
 		System.out.println(Genetic.createRocket().toString());
+		FilesReader.saveSetting();
 	}
 }

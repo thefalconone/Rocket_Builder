@@ -14,12 +14,11 @@ public class FilesReader {
 
 	public static ArrayList<Engine> allEngines;
 	public static ArrayList<FuelTank> allFuelTanks;
-	public static Settings settings;
 
 	public static void readAllData(){
 		FilesReader.allEngines = readEngines();
 		FilesReader.allFuelTanks = readFuelTanks();
-		FilesReader.settings = readSettings();
+		readSettings();
 	}
 
 	public static ArrayList<Engine> readEngines(){
@@ -142,7 +141,7 @@ public class FilesReader {
 		return listFuelTanks;
 	}
 
-	public static Settings readSettings(){
+	public static void readSettings(){
 
 		Path path = Paths.get("data","settings.txt");
 
@@ -166,7 +165,7 @@ public class FilesReader {
 			List<String> file = Files.readAllLines(path);
 			ListIterator<String> lines = file.listIterator();
 
-			return new Settings(
+			new Settings(
 					Float.parseFloat(lines.next()),
 					Float.parseFloat(lines.next()),
 					Float.parseFloat(lines.next()),
@@ -188,6 +187,27 @@ public class FilesReader {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+	}
+
+	public static void saveSetting(){
+
+		Path path = Paths.get("data","settings.txt");
+
+		try {
+			//créé le dossier si il existe pas
+			java.io.File data = new java.io.File(Paths.get("data").toString());
+			if(!data.exists()){
+				if(!data.mkdir()){
+					throw new IOException();
+				}
+			}
+
+			String string = (Settings.ratiokill+1)+"\n"+Settings.moddeltav+"\n"+Settings.modcost+"\n"+Settings.modtwr+"\n"+Settings.mintwr+"\n"+Settings.maxtwr+"\n"+Settings.payload+"\n"+Settings.nbpop+"\n"+Settings.nbmut+"\n"+Settings.nbmaxft+"\n"+Settings.nbmaxstages+"\n"+Settings.nbgen+"\n"+Settings.mindv+"\n"+Settings.maxdv+"\n"+Settings.mincost+"\n"+Settings.maxcost;
+			//créé le fichier
+			Files.write(path, string.getBytes(), StandardOpenOption.CREATE);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
