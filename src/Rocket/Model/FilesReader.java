@@ -1,4 +1,4 @@
-package Rocket;
+package Rocket.Model;
 
 import java.io.IOException;
 import java.nio.file.Files;

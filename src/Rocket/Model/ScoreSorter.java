@@ -1,4 +1,4 @@
-package Rocket;
+package Rocket.Model;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package Rocket;
+package Rocket.Model;
 
 public class Settings {
 
