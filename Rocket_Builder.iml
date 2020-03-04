@@ -16,5 +16,19 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$APPLICATION_HOME_DIR$/controlsfx-jfx-13" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$APPLICATION_HOME_DIR$/controlsfx-jfx-13/controlsfx-samples/src/main/java" />
+          <root url="file://$APPLICATION_HOME_DIR$/controlsfx-jfx-13/controlsfx/src/main/java" />
+          <root url="file://$APPLICATION_HOME_DIR$/controlsfx-jfx-13/controlsfx/src/test/java" />
+          <root url="file://$APPLICATION_HOME_DIR$/controlsfx-jfx-13/fxsampler/src/main/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

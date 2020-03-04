@@ -26,6 +26,14 @@ public class Stage {
 		this.totalMass=totalMass;
 	}
 
+	public ArrayList<FuelTank> getFuelTanks() {
+		return fuelTanks;
+	}
+
+	public Engine getEngine() {
+		return engine;
+	}
+
 	@Override
 	public String toString() {
 		return "Stage{" +
