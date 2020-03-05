@@ -125,7 +125,7 @@ public class Stage {
 
 	public float getMinTWR(){
 		if(engine==null || fuelTanks==null)
-			return 0;
+			return Float.POSITIVE_INFINITY;
 
 		float minTWR;
 

@@ -3,10 +3,9 @@ package Rocket.Model;
 public class FuelTank {
 
 	public String name;
-	public int cost, lf, ox, mo;
-	public float drymass;
+	public float drymass, lf, ox, mo, cost;
 
-	public FuelTank(String name, float drymass, int cost, int lf, int ox, int mo){
+	public FuelTank(String name, float drymass, float cost, float lf, float ox, float mo){
 		this.name=name;
 		this.drymass=drymass;
 		this.cost=cost;

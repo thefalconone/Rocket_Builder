@@ -61,7 +61,8 @@ public class FilesReader {
 							break;
 					}
 
-					int isp, thrust;
+					int isp;
+					float thrust;
 					int lf=0, ox=0, sf=0;
 					//next one can be amount
 					//amount can be solid fuel or liquid fuel and oxidizer
@@ -76,7 +77,7 @@ public class FilesReader {
 					}else if(line1.startsWith("amount")){
 						sf = Integer.parseInt(line1.substring(9));
 						isp = Integer.parseInt(line2.substring(8));
-						thrust = Integer.parseInt(lines.next().substring(12));
+						thrust = Float.parseFloat(lines.next().substring(12));
 					}else{
 						isp = Integer.parseInt(line1.substring(8));
 						thrust = Integer.parseInt(line2.substring(12));
@@ -115,19 +116,19 @@ public class FilesReader {
 
 					float drymass = Float.parseFloat(lines.next().substring(7));
 
-					int lf=0, ox=0, mo=0;
+					float lf=0, ox=0, mo=0;
 					//next one can be amount
 					//amount can be solid fuel or liquid fuel and oxidizer
 					String line1 = lines.next();
 					String line2 = lines.next();
 
 					if(line1.startsWith("name = LiquidFuel") && line2.startsWith("name = Oxidizer")){
-						lf = Integer.parseInt(lines.next().substring(9));
-						ox = Integer.parseInt(lines.next().substring(9));
+						lf = Float.parseFloat(lines.next().substring(9));
+						ox = Float.parseFloat(lines.next().substring(9));
 					}else if(line1.startsWith("name = LiquidFuel")){
-						lf = Integer.parseInt(line2.substring(9));
-					}else if(line1.startsWith("name = name = MonoPropellant")){
-						mo = Integer.parseInt(line2.substring(9));
+						lf = Float.parseFloat(line2.substring(9));
+					}else if(line1.startsWith("name = MonoPropellant")){
+						mo = Float.parseFloat(line2.substring(9));
 					}
 
 					listFuelTanks.add(new FuelTank(name, drymass, cost, lf, ox, mo));
@@ -181,15 +182,15 @@ public class FilesReader {
 					Integer.parseInt(lines.next()),
 					Integer.parseInt(lines.next()),
 					Integer.parseInt(lines.next()),
-					Integer.parseInt(lines.next())
-			);
+					Integer.parseInt(lines.next()));
+
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void saveSetting(){
+	public static void saveSettings(){
 
 		Path path = Paths.get("data","settings.txt");
 

@@ -123,20 +123,18 @@ public class Rocket {
 			return 0;
 
 		//-----------------MAIN SCORE--------------------
-		float avrgDv = Settings.maxdv - Settings.mindv;
-		score = (float) Math.pow(100*dv/avrgDv, Settings.moddeltav);
+		score = (float) Math.pow(dv/10000, Settings.moddeltav);
 
 		//float avrgMinTWR = Settings.maxtwr - Settings.mintwr;
-		//score *= Math.pow(100*minTWR/avrgMinTWR, Settings.modtwr);
+		//score *= Math.pow(minTWR/avrgMinTWR, Settings.modtwr);
 
-		float avrgCost = Settings.maxcost - Settings.mincost;
-		score *= Math.pow(100*cost/avrgCost, Settings.modcost);
+		score *= Math.pow(100000/cost, Settings.modcost);
 
 
 		//-----------------PENALTIES---------------------
 		if(dv<Settings.mindv)
 			score *= 0.1*dv/Settings.mindv;
-		else if(dv>Settings.maxdv)
+		else if(Settings.maxdv!=-1 && dv>Settings.maxdv)
 			score *= 0.1*Settings.maxdv/dv;
 
 		//not punishing minTWR=0 because score would be 0

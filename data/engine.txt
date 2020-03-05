@@ -1,13 +1,25 @@
-24 tempcfg.txt
+37 tempcfg.txt
 24-77 Twitch Liquid Fuel Engine
 cost = 400
 mass = 0.09
 EngineType = LiquidFuel
 key = 0 290
 maxThrust = 16
+24-77 Twitch Liquid Fuel Engine
+cost = 230
+mass = 0.08
+EngineType = LiquidFuel
+key = 0 290
+maxThrust = 16
 48-7S Spark Liquid Fuel Engine
 cost = 240
 mass = 0.1
+EngineType = LiquidFuel
+key = 0 320
+maxThrust = 20
+48-7S Spark Liquid Fuel Engine
+cost = 240
+mass = 0.13
 EngineType = LiquidFuel
 key = 0 320
 maxThrust = 20
@@ -29,6 +41,18 @@ mass = 0.02
 EngineType = LiquidFuel
 key = 0 290
 maxThrust = 2
+LV-1 Ant Liquid Fuel Engine
+cost = 110
+mass = 0.02
+EngineType = LiquidFuel
+key = 0 315
+maxThrust = 2
+LV-909 Terrier Liquid Fuel Engine
+cost = 390
+mass = 0.5
+EngineType = LiquidFuel
+key = 0 345
+maxThrust = 60
 LV-909 Terrier Liquid Fuel Engine
 cost = 390
 mass = 0.5
@@ -59,6 +83,12 @@ mass = 6
 EngineType = LiquidFuel
 key = 0 310
 maxThrust = 1500
+RE-M3 Mainsail Liquid Fuel Engine
+cost = 13000
+mass = 6
+EngineType = LiquidFuel
+key = 0 310
+maxThrust = 1500
 Mk-55 Thud Liquid Fuel Engine
 cost = 820
 mass = 0.9
@@ -71,6 +101,18 @@ mass = 1.75
 EngineType = LiquidFuel
 key = 0 350
 maxThrust = 250
+RE-L10 Poodle Liquid Fuel Engine
+cost = 1300
+mass = 1.75
+EngineType = LiquidFuel
+key = 0 350
+maxThrust = 250
+RE-I5 Skipper Liquid Fuel Engine
+cost = 5300
+mass = 3
+EngineType = LiquidFuel
+key = 0 320
+maxThrust = 650
 RE-I5 Skipper Liquid Fuel Engine
 cost = 5300
 mass = 3
@@ -96,6 +138,20 @@ mass = 0.09
 EngineType = MonoProp
 key = 0 250
 maxThrust = 20
+RT-10 Hammer Solid Fuel Booster
+cost = 400
+mass = 0.75
+EngineType = SolidBooster
+amount = 375
+key = 0 195
+maxThrust = 227
+RT-5 Flea Solid Fuel Booster
+cost = 200
+mass = 0.45
+EngineType = SolidBooster
+amount = 140
+key = 0 165
+maxThrust = 192
 LFB KR-1x2 Twin-Boar Liquid Fuel Engine
 cost = 17000
 mass = 10.5
@@ -137,6 +193,20 @@ EngineType = SolidBooster
 amount = 140
 key = 0 165
 maxThrust = 192
+S2-17 Thoroughbred Solid Fuel Booster
+cost = 9000
+mass = 10
+EngineType = SolidBooster
+amount = 8000
+key = 0 230
+maxThrust = 1700
+S2-33 Clydesdale Solid Fuel Booster
+cost = 18500
+mass = 21
+EngineType = SolidBooster
+amount = 16400
+key = 0 235
+maxThrust = 3300
 Sepratron I
 cost = 75
 mass = 0.0125
@@ -144,7 +214,17 @@ EngineType = SolidBooster
 amount = 8
 key = 0 154
 maxThrust = 18
-Vernor Engine
-cost = 1400
-mass = 0.08
-key = 0 260
+F3S0 Shrimp Solid Fuel Booster
+cost = 150
+mass = 0.15
+EngineType = SolidBooster
+amount = 90
+key = 0 215
+maxThrust = 30
+FM1 Mite Solid Fuel Booster
+cost = 75
+mass = 0.075
+EngineType = SolidBooster
+amount = 40
+key = 0 210
+maxThrust = 12.5

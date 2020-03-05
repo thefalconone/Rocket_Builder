@@ -1,4 +1,4 @@
-41 tempcfg.txt
+43 tempcfg.txt
 Mk3 to Mk2 Adapter
 cost = 2200
 mass = 1.43
@@ -48,13 +48,27 @@ name = LiquidFuel
 name = Oxidizer
 amount = 1125
 amount = 1375
-Rockomax Jumbo-64 Fuel Tank
-cost = 5750
-mass = 4
+R-11 'Baguette' External Tank
+cost = 50
+mass = 0.03375
 name = LiquidFuel
 name = Oxidizer
-amount = 2880
-amount = 3520
+amount = 24.3
+amount = 29.7
+R-4 'Dumpling' External Tank
+cost = 50
+mass = 0.01375
+name = LiquidFuel
+name = Oxidizer
+amount = 9.9
+amount = 12.1
+R-12 'Doughnut' External Tank
+cost = 147
+mass = 0.0375
+name = LiquidFuel
+name = Oxidizer
+amount = 27
+amount = 33
 Oscar-B Fuel Tank
 cost = 70
 mass = 0.025
@@ -62,62 +76,6 @@ name = LiquidFuel
 name = Oxidizer
 amount = 18
 amount = 22
-FL-T100 Fuel Tank
-cost = 150
-mass = 0.0625
-name = LiquidFuel
-name = Oxidizer
-amount = 45
-amount = 55
-FL-T200 Fuel Tank
-cost = 275
-mass = 0.125
-name = LiquidFuel
-name = Oxidizer
-amount = 90
-amount = 110
-FL-T400 Fuel Tank
-cost = 500
-mass = 0.25
-name = LiquidFuel
-name = Oxidizer
-amount = 180
-amount = 220
-FL-T800 Fuel Tank
-cost = 800
-mass = 0.5
-name = LiquidFuel
-name = Oxidizer
-amount = 360
-amount = 440
-ROUND-8 Toroidal Fuel Tank
-cost = 175
-mass = 0.0375
-name = LiquidFuel
-name = Oxidizer
-amount = 27
-amount = 33
-Rockomax X200-16 Fuel Tank
-cost = 1550
-mass = 1
-name = LiquidFuel
-name = Oxidizer
-amount = 720
-amount = 880
-Rockomax X200-32 Fuel Tank
-cost = 3000
-mass = 2
-name = LiquidFuel
-name = Oxidizer
-amount = 1440
-amount = 1760
-Rockomax X200-8 Fuel Tank
-cost = 800
-mass = 0.5
-name = LiquidFuel
-name = Oxidizer
-amount = 360
-amount = 440
 Mk0 Liquid Fuel Fuselage
 cost = 200
 mass = 0.025
@@ -210,35 +168,91 @@ mass = 3.57
 name = LiquidFuel
 amount = 5000
 Mk3 Monopropellant Tank
-cost = 4300
-mass = 0.71
+cost = 5040
+mass = 1.4
 name = MonoPropellant
-amount = 1000
+amount = 2100
 FL-R1 RCS Fuel Tank
-cost = 1300
+cost = 1800
 mass = 0.4
 name = MonoPropellant
 amount = 750
 FL-R10 RCS Fuel Tank
 cost = 200
-mass = 0.05
+mass = 0.02
 name = MonoPropellant
-amount = 80
+amount = 20
 FL-R25 RCS Fuel Tank
-cost = 600
-mass = 0.15
+cost = 330
+mass = 0.08
 name = MonoPropellant
-amount = 250
+amount = 120
 Stratus-V Roundified Monopropellant Tank
 cost = 200
-mass = 0.075
+mass = 0.02
 name = MonoPropellant
-amount = 60
+amount = 20
 Stratus-V Cylindrified Monopropellant Tank
-cost = 450
-mass = 0.15
+cost = 250
+mass = 0.03
 name = MonoPropellant
-amount = 150
+amount = 50
+Rockomax X200-16 Fuel Tank
+cost = 1550
+mass = 1
+name = LiquidFuel
+name = Oxidizer
+amount = 720
+amount = 880
+Rockomax X200-32 Fuel Tank
+cost = 3000
+mass = 2
+name = LiquidFuel
+name = Oxidizer
+amount = 1440
+amount = 1760
+Rockomax Jumbo-64 Fuel Tank
+cost = 5750
+mass = 4
+name = LiquidFuel
+name = Oxidizer
+amount = 2880
+amount = 3520
+Rockomax X200-8 Fuel Tank
+cost = 800
+mass = 0.5
+name = LiquidFuel
+name = Oxidizer
+amount = 360
+amount = 440
+FL-T100 Fuel Tank
+cost = 150
+mass = 0.0625
+name = LiquidFuel
+name = Oxidizer
+amount = 45
+amount = 55
+FL-T200 Fuel Tank
+cost = 275
+mass = 0.125
+name = LiquidFuel
+name = Oxidizer
+amount = 90
+amount = 110
+FL-T400 Fuel Tank
+cost = 500
+mass = 0.25
+name = LiquidFuel
+name = Oxidizer
+amount = 180
+amount = 220
+FL-T800 Fuel Tank
+cost = 800
+mass = 0.5
+name = LiquidFuel
+name = Oxidizer
+amount = 360
+amount = 440
 Kerbodyne S3-14400 Tank
 cost = 13000
 mass = 9

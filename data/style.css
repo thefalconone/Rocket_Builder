@@ -1,0 +1,32 @@
+body
+{
+	font-family: arial;
+	font-size: small;
+	line-height: 1.5em;
+}
+
+table
+{
+	/*border-collapse: collapse;
+	border: 2px solid black;
+    border-radius: 20px;
+    -moz-border-radius: 20px;*/
+    padding: 20px;
+}
+td
+{
+    padding: .25em;
+}
+.stage
+{
+    font-weight: bold;
+	border-top: 1px solid black;
+}
+#bottom-space
+{
+	border-bottom: 1px solid black;
+}
+.stats
+{
+    font-weight: bold;
+}

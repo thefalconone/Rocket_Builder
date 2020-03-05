@@ -35,6 +35,7 @@ public class Genetic {
 
 			scores.sort(new ScoreSorter());
 			Score bestScore = scores.get(Settings.nbpop-1);
+			System.out.println(bestScore.getScore());
 			bestRocket = population.get(bestScore.getIndex());
 
 			//----------------------SELECTION----------------------
