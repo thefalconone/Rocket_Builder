@@ -48,8 +48,6 @@ public class Rocket {
 			this.addStage(newStage);
 			upperStagesMass += newStage.getTotalMass();
 		}
-		if(this.stages.size()==1)
-			System.out.println("aaa");
 	}
 
 	public void addStage(Stage stage){
@@ -74,8 +72,9 @@ public class Rocket {
 	public float getDeltaV(){
 		float deltaV=0;
 
-		for(Stage stage : stages)
-			deltaV += stage.getDeltaV();
+		for(int i=1; i<stages.size(); i++) {
+			deltaV += stages.get(i).getDeltaV();
+		}
 
 		return deltaV;
 	}
@@ -83,8 +82,9 @@ public class Rocket {
 	public int getCost(){
 		int cost=0;
 
-		for(Stage stage : stages)
-			cost += stage.getCost();
+		for(int i=1; i<stages.size(); i++) {
+			cost += stages.get(i).getCost();
+		}
 
 		return cost;
 	}
@@ -92,11 +92,13 @@ public class Rocket {
 	public float getMinTWR(){
 		float minTWR=Integer.MAX_VALUE;
 
-		for(Stage stage : stages) {
-			float stageTWR = stage.getMinTWR();
+		for(int i=1; i<stages.size(); i++) {
+			float stageTWR = stages.get(i).getMinTWR();
 			if (minTWR > stageTWR)
 				minTWR = stageTWR;
 		}
+		if(minTWR==Integer.MAX_VALUE)
+			minTWR=0;
 
 		return minTWR;
 	}
@@ -104,13 +106,24 @@ public class Rocket {
 	public float getMaxTWR(){
 		float maxTWR=0;
 
-		for(Stage stage : stages) {
-			float stageTWR = stage.getMaxTWR();
+		for(int i=1; i<stages.size(); i++) {
+			float stageTWR = stages.get(i).getMaxTWR();
 			if (maxTWR < stageTWR)
 				maxTWR = stageTWR;
 		}
 
 		return maxTWR;
+	}
+
+	private static int print = 1;
+
+	private boolean canprint(){
+		return print==1;
+	}
+
+	public void printscore(float score){
+		if (canprint())
+		System.out.println(score);
 	}
 
 	public float getScore(){
@@ -124,29 +137,34 @@ public class Rocket {
 
 		//-----------------MAIN SCORE--------------------
 		score = (float) Math.pow(dv/10000, Settings.moddeltav);
+		//printscore(score);
 
 		//float avrgMinTWR = Settings.maxtwr - Settings.mintwr;
 		//score *= Math.pow(minTWR/avrgMinTWR, Settings.modtwr);
 
-		score *= Math.pow(100000/cost, Settings.modcost);
+		score *= Math.pow(100000.0/cost, Settings.modcost);
+		//printscore(score);
 
 
 		//-----------------PENALTIES---------------------
 		if(dv<Settings.mindv)
-			score *= 0.1*dv/Settings.mindv;
+			score *= 0.1;
 		else if(Settings.maxdv!=-1 && dv>Settings.maxdv)
 			score *= 0.1*Settings.maxdv/dv;
+		//printscore(score);
 
 		//not punishing minTWR=0 because score would be 0
 		if(minTWR!=0 && minTWR<Settings.mintwr)
-			score *= 0.1*minTWR/Settings.mintwr;
+			score *= 0.1;
 		if(maxTWR!=0 && Settings.maxtwr!=-1 && maxTWR>Settings.maxtwr)
 			score *= 0.1*Settings.maxtwr/maxTWR;
+		//printscore(score);
 
 		if(cost<Settings.mincost)
 			score *= 0.1*cost/Settings.mincost;
 		else if(Settings.maxcost!=-1 && cost>Settings.maxcost)
 			score *= 0.1*Settings.maxcost/cost;
+		//printscore(score);
 
 		return score;
 	}

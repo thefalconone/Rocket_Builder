@@ -13,6 +13,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,7 +29,7 @@ public class MainWindow extends Application {
 	public Slider Slider_cost = new Slider(0, 100000, Settings.maxcost);
 	public Slider Slider_twr = new Slider(0, 20, Settings.maxtwr);
 
-	public Spinner<Float> Spinner_moddeltav = new Spinner<>(0, 3, Settings.moddeltav);
+	public Spinner<Integer> Spinner_moddeltav = new Spinner<>();
 	public Spinner<Float> Spinner_modcost = new Spinner<>(0, 3, Settings.modcost);
 	public Spinner<Float> Spinner_modtwr = new Spinner<>(0, 3, Settings.modtwr);
 
@@ -38,30 +39,23 @@ public class MainWindow extends Application {
 	@Override
 	public void start(javafx.stage.Stage stage) throws IOException {
 
+		int moddeltav = 1;
+
 		// Value factory.
-		SpinnerValueFactory<Float> valueFactory = new SpinnerValueFactory<>() {
-			@Override
-			public void decrement(int i) {
-				this.setValue(this.getValue()-1);
-			}
-			@Override
-			public void increment(int i) {
-				this.setValue(this.getValue()+1);
-			}
-		};
-		// Default value for Spinner
-		valueFactory.setValue(Settings.moddeltav);
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 3, moddeltav);
+
 		Spinner_moddeltav.setValueFactory(valueFactory);
-
-		// When spinner change value.
-		Spinner_moddeltav.valueProperty().addListener((observableValue, aFloat, t1) -> System.out.println("moddeltav: " + aFloat));
-
 
 		Parent root = FXMLLoader.load(getClass().getResource("../View/MainWindow.fxml"));
 		stage.setTitle("Rocket Builder");
 		stage.getIcons().add(new Image("file:icon.png"));
 		stage.setScene(new Scene(root, 900, 600));
 		stage.show();
+	}
+
+	@Override
+	public void stop(){
+		FilesReader.saveSettings();
 	}
 
 	public static void main(String[] args) {
@@ -114,8 +108,13 @@ public class MainWindow extends Application {
 		Settings.modtwr = Spinner_modtwr.getValue();
 	}
 
-	public void options() throws Exception {
+	public void menuFileOptions() throws Exception {
 		Options options = new Options();
 		options.start(new javafx.stage.Stage());
+	}
+
+	public void menuFileClose() {
+		Stage stage = (Stage) Spinner_moddeltav.getScene().getWindow();
+		stage.close();
 	}
 }

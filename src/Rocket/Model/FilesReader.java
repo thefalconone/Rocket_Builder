@@ -166,7 +166,7 @@ public class FilesReader {
 			List<String> file = Files.readAllLines(path);
 			ListIterator<String> lines = file.listIterator();
 
-			new Settings(
+			System.out.println(new Settings(
 					Float.parseFloat(lines.next()),
 					Float.parseFloat(lines.next()),
 					Float.parseFloat(lines.next()),
@@ -182,7 +182,7 @@ public class FilesReader {
 					Integer.parseInt(lines.next()),
 					Integer.parseInt(lines.next()),
 					Integer.parseInt(lines.next()),
-					Integer.parseInt(lines.next()));
+					Integer.parseInt(lines.next())).toString());
 
 		}
 		catch (IOException e) {

@@ -104,47 +104,38 @@ public class Stage {
 	}
 
 	public int getCost(){
-		if(engine==null || fuelTanks==null)
-			return 0;
 
-		int cost=0;
+		int cost = engine.cost*nbEngines;
 
-		cost += engine.cost*nbEngines;
-
-		for(FuelTank f : this.fuelTanks){
+		for (FuelTank f : this.fuelTanks) {
 			cost += f.cost;
 		}
+
 		return cost;
 	}
 
 	public float getDeltaV(){
-		if(engine==null || fuelTanks==null)
-			return 0;
 		return (float) (log(this.getTotalMass()/this.getDryMass()) * engine.isp * 9.81);
 	}
 
 	public float getMinTWR(){
-		if(engine==null || fuelTanks==null)
-			return Float.POSITIVE_INFINITY;
 
 		float minTWR;
 
 		if(this.getDryMass() == this.getTotalMass())
 			minTWR=0;
 		else
-			minTWR = (float) (engine.thrust / (this.getTotalMass()*9.81));
+			minTWR = (float) (engine.thrust * nbEngines / (this.getTotalMass()*9.81));
 
 		return minTWR;
 	}
 
 	public float getMaxTWR(){
-		if(engine==null || fuelTanks==null)
-			return 0;
 
 		float maxTWR=0;
 
 		if(this.getDryMass() != this.getTotalMass())
-			maxTWR = (float) (engine.thrust / (this.getDryMass()*9.81));
+			maxTWR = (float) (engine.thrust * nbEngines / (this.getDryMass()*9.81));
 
 		return maxTWR;
 	}

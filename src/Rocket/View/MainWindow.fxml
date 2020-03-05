@@ -9,8 +9,8 @@
 	<MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 		<Menu mnemonicParsing="false" text="File">
 			<MenuItem mnemonicParsing="false" text="Save Rocket" />
-         <MenuItem mnemonicParsing="false" onAction="#options" text="Options" />
-         <MenuItem mnemonicParsing="false" text="Close" />
+         <MenuItem mnemonicParsing="false" onAction="#menuFileOptions" text="Options" />
+         <MenuItem mnemonicParsing="false" onAction="#menuFileClose" text="Close" />
 		</Menu>
 	</MenuBar>
 	<HBox layoutX="29.0" layoutY="39.0" prefHeight="389.0" prefWidth="747.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
@@ -34,7 +34,7 @@
             <Label text="Importance" GridPane.columnIndex="1" />
             <Label text="DeltaV" GridPane.rowIndex="1" />
             <Slider fx:id="Slider_dv" majorTickUnit="2500.0" max="10000.0" minorTickCount="1" onMouseDragged="#dvChangedValue" showTickLabels="true" showTickMarks="true" GridPane.rowIndex="2" />
-            <Spinner fx:id="Spinner_moddeltav" onInputMethodTextChanged="#moddeltavChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Spinner fx:id="Spinner_moddeltav" onMouseClicked="#moddeltavChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Cost" GridPane.rowIndex="3" />
             <Slider fx:id="Slider_cost" majorTickUnit="50000.0" max="100000.0" minorTickCount="5" onDragDetected="#costChangedValue" showTickLabels="true" showTickMarks="true" GridPane.rowIndex="4" />
             <Spinner fx:id="Spinner_modcost" onInputMethodTextChanged="#modcostChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
