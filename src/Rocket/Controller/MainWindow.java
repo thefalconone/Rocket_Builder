@@ -4,12 +4,11 @@ import Rocket.Model.FilesReader;
 import Rocket.Model.Genetic;
 import Rocket.Model.Settings;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Slider;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -25,26 +24,28 @@ public class MainWindow extends Application {
 
 	public WebView webView;
 
-	public Slider Slider_dv = new Slider(0, 1000000, Settings.maxdv);
-	public Slider Slider_cost = new Slider(0, 100000, Settings.maxcost);
-	public Slider Slider_twr = new Slider(0, 20, Settings.maxtwr);
+	public ChoiceBox<String> DeltaVCostChoice;
+	public Label DeltaVCost;
 
-	public Spinner<Integer> Spinner_moddeltav = new Spinner<>();
-	public Spinner<Float> Spinner_modcost = new Spinner<>(0, 3, Settings.modcost);
-	public Spinner<Float> Spinner_modtwr = new Spinner<>(0, 3, Settings.modtwr);
+	public Spinner<Integer> Spinner_moddeltavcost;
+	public Spinner<Integer> Spinner_modtwr = new Spinner<>(0, 3, Settings.modtwr);
+	public Slider Slider_twrmin;
+	public Slider Slider_twrmax;
 
 	public Spinner<Integer> Spinner_nbmaxstages = new Spinner<>(0, 5, Settings.nbmaxstages);
 	public Spinner<Integer> Spinner_nbmaxft = new Spinner<>(0, 5, Settings.nbmaxft);
+	public Slider Slider_deltavcost;
 
 	@Override
 	public void start(javafx.stage.Stage stage) throws IOException {
 
-		int moddeltav = 1;
+		DeltaVCostChoice = new ChoiceBox<>(FXCollections.observableArrayList("Best Cost", "Best DeltaV"));
 
+		int modtwr = 1;
 		// Value factory.
-		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 3, moddeltav);
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 3, modtwr);
 
-		Spinner_moddeltav.setValueFactory(valueFactory);
+		Spinner_modtwr.setValueFactory(valueFactory);
 
 		Parent root = FXMLLoader.load(getClass().getResource("../View/MainWindow.fxml"));
 		stage.setTitle("Rocket Builder");
@@ -82,30 +83,13 @@ public class MainWindow extends Application {
 		webEngine.load(path.toUri().toString());
 	}
 
-	public void dvChangedValue() {
+	/*public void dvChangedValue() {
 		Settings.maxdv = (int) Slider_dv.getValue();
 		System.out.println("maxdv:"+Settings.maxdv);
-	}
-
-	public void costChangedValue() {
-		Settings.maxcost = (int) Slider_cost.getValue();
-	}
-
-	public void twrChangedValue() {
-		Settings.maxtwr = (int) Slider_twr.getValue();
-	}
-
-	public void moddeltavChangedValue() {
-		Settings.moddeltav = Spinner_moddeltav.getValue();
-		System.out.println("moddeltav:"+Settings.moddeltav);
-	}
+	}*/
 
 	public void modcostChangedValue() {
-		Settings.modcost = Spinner_modcost.getValue();
-	}
-
-	public void modtwrChangedValue() {
-		Settings.modtwr = Spinner_modtwr.getValue();
+		Settings.modcost = Spinner_moddeltavcost.getValue();
 	}
 
 	public void menuFileOptions() throws Exception {
@@ -114,7 +98,19 @@ public class MainWindow extends Application {
 	}
 
 	public void menuFileClose() {
-		Stage stage = (Stage) Spinner_moddeltav.getScene().getWindow();
+		Stage stage = (Stage) webView.getScene().getWindow();
 		stage.close();
+	}
+
+	public void deltavcostChangedValue() {
+	}
+
+	public void mintwrChangedValue() {
+	}
+
+	public void maxtwrChangedValue() {
+	}
+
+	public void moddeltavcostChangedValue() {
 	}
 }

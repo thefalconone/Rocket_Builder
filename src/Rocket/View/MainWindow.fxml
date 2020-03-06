@@ -3,9 +3,10 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<AnchorPane prefHeight="491.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rocket.Controller.MainWindow">
+<AnchorPane prefHeight="432.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rocket.Controller.MainWindow">
 	<MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 		<Menu mnemonicParsing="false" text="File">
 			<MenuItem mnemonicParsing="false" text="Save Rocket" />
@@ -14,9 +15,11 @@
 		</Menu>
 	</MenuBar>
 	<HBox layoutX="29.0" layoutY="39.0" prefHeight="389.0" prefWidth="747.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
-        <GridPane minHeight="170.0" minWidth="150.0">
+        <GridPane hgap="10.0" minHeight="170.0" minWidth="200.0" vgap="10.0">
             <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="109.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="109.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="91.0" />
             </columnConstraints>
             <rowConstraints>
@@ -24,41 +27,33 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                <Insets bottom="10.0" left="10.0" right="10.0" />
             </padding>
-            <Label text="Importance" GridPane.columnIndex="1" />
-            <Label text="DeltaV" GridPane.rowIndex="1" />
-            <Slider fx:id="Slider_dv" majorTickUnit="2500.0" max="10000.0" minorTickCount="1" onMouseDragged="#dvChangedValue" showTickLabels="true" showTickMarks="true" GridPane.rowIndex="2" />
-            <Spinner fx:id="Spinner_moddeltav" onMouseClicked="#moddeltavChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Cost" GridPane.rowIndex="3" />
-            <Slider fx:id="Slider_cost" majorTickUnit="50000.0" max="100000.0" minorTickCount="5" onDragDetected="#costChangedValue" showTickLabels="true" showTickMarks="true" GridPane.rowIndex="4" />
-            <Spinner fx:id="Spinner_modcost" onInputMethodTextChanged="#modcostChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="TWR" GridPane.rowIndex="5" />
-            <Slider fx:id="Slider_twr" blockIncrement="0.5" majorTickUnit="5.0" max="20.0" minorTickCount="4" onDragDetected="#twrChangedValue" showTickLabels="true" showTickMarks="true" GridPane.rowIndex="6" />
-            <Spinner fx:id="Spinner_modtwr" onInputMethodTextChanged="#modtwrChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <ChoiceBox fx:id="DeltaVCostChoice" prefWidth="150.0" />
+            <Label fx:id="DeltaVCost" text="DeltaV" wrapText="true" GridPane.columnIndex="1" />
+            <Slider fx:id="Slider_deltavcost" blockIncrement="100.0" majorTickUnit="25000.0" max="100000.0" minorTickCount="1" onMouseDragged="#deltavcostChangedValue" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Importance" wrapText="true" GridPane.columnIndex="3" />
+            <Spinner fx:id="Spinner_moddeltavcost" onMouseClicked="#moddeltavcostChangedValue" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label text="Minimum TWR" wrapText="true" GridPane.rowIndex="2" />
+            <Slider fx:id="Slider_twrmin" blockIncrement="0.5" majorTickUnit="5.0" max="20.0" minorTickCount="4" onMouseDragged="#mintwrChangedValue" showTickLabels="true" showTickMarks="true" GridPane.rowIndex="3" />
+            <Label text="Maximum TWR" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Slider fx:id="Slider_twrmax" blockIncrement="0.5" majorTickUnit="5.0" max="20.0" minorTickCount="4" onMouseDragged="#maxtwrChangedValue" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <Label text="Importance" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Spinner fx:id="Spinner_modtwr" onInputMethodTextChanged="#modcostChangedValue" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label text="Max number of stages" wrapText="true" GridPane.rowIndex="5" />
+            <Spinner fx:id="Spinner_nbmaxstages" GridPane.rowIndex="6" />
+            <Label text="Max number of fuel tanks/stage" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Spinner fx:id="Spinner_nbmaxft" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#buttonBuildClicked" prefHeight="50.0" prefWidth="200.0" text="Build" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.rowSpan="2">
+            <font>
+               <Font size="14.0" />
+            </font></Button>
         </GridPane>
-        <VBox minWidth="100.0" prefHeight="200.0" spacing="10.0">
-            <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-            </padding>
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-            <Label text="Max number of stages" wrapText="true" />
-            <Spinner fx:id="Spinner_nbmaxstages" />
-            <Label text="Max number of fuel tanks/stage" wrapText="true" />
-            <Spinner fx:id="Spinner_nbmaxft" />
-            <Button mnemonicParsing="false" onAction="#buttonBuildClicked" prefWidth="200.0" text="Build" VBox.vgrow="ALWAYS">
-                <VBox.margin>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                </VBox.margin>
-            </Button>
-        </VBox>
       <WebView fx:id="webView" blendMode="MULTIPLY" maxWidth="500.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
       <padding>
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

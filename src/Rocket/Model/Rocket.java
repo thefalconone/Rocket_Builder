@@ -136,8 +136,11 @@ public class Rocket {
 			return 0;
 
 		//-----------------MAIN SCORE--------------------
-		score = (float) Math.pow(dv/10000, Settings.moddeltav);
-		//printscore(score);
+
+		// (  e^( -(goal-real)^2 ) +1 )^mod
+
+		score = (float) Math.pow( Math.exp( -Math.pow(Settings.dv-dv, 2.0) )+1, Settings.moddeltav);
+		printscore(score);
 
 		//float avrgMinTWR = Settings.maxtwr - Settings.mintwr;
 		//score *= Math.pow(minTWR/avrgMinTWR, Settings.modtwr);
