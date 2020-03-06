@@ -138,8 +138,7 @@ public class Rocket {
 
 		//-----------------MAIN SCORE--------------------
 
-		// ( e^( (-(goal-real)^2)/(goal^2) ) +1 )^2
-		//Math.exp( -Math.pow(Settings.dv-dv, 2.0) )+1
+		// ( e^( (-(goal-real)^2)/(goal^2) ) +1 )^2²&
 
 		if(Settings.cost==0) {
 			double upper = -Math.pow(Settings.dv-dv, 2);

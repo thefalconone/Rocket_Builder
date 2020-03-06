@@ -73,7 +73,7 @@ public class Stage {
 
 	private void calculateDryMass(float upperStagesMass){
 
-		dryMass = upperStagesMass;
+		dryMass = upperStagesMass + engine.getTotalMass() * nbEngines;
 
 		switch (engine.type){
 			case liquid://consume lf and ox
