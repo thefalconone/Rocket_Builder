@@ -58,4 +58,23 @@ public class Settings {
 				", cost=" + cost +
 				'}';
 	}
+
+	public static void print(){
+		System.out.println("Settings{" +
+				"ratiokill=" + ratiokill +
+				", moddeltav=" + moddeltav +
+				", modcost=" + modcost +
+				", modtwr=" + modtwr +
+				", mintwr=" + mintwr +
+				", maxtwr=" + maxtwr +
+				", payload=" + payload +
+				", nbpop=" + nbpop +
+				", nbmut=" + nbmut +
+				", nbmaxft=" + nbmaxft +
+				", nbmaxstages=" + nbmaxstages +
+				", nbgen=" + nbgen +
+				", dv=" + dv +
+				", cost=" + cost +
+				'}');
+	}
 }
