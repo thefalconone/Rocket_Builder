@@ -127,6 +127,7 @@ public class Rocket {
 	}
 
 	public float getScore(){
+		/*
 		int cost = getCost();
 		float dv = getDeltaV(), minTWR=getMinTWR(), maxTWR=getMaxTWR();
 		float score;
@@ -170,5 +171,7 @@ public class Rocket {
 		//printscore(score);
 
 		return score;
+		 */
+		return 0;
 	}
 }

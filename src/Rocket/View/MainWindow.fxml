@@ -34,25 +34,57 @@
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" />
             </padding>
-         <ChoiceBox fx:id="DeltaVCostChoice" prefWidth="150.0" />
             <Label fx:id="DeltaVCost" text="DeltaV" wrapText="true" GridPane.columnIndex="1" />
             <Slider fx:id="Slider_deltavcost" blockIncrement="100.0" majorTickUnit="25000.0" max="100000.0" minorTickCount="1" onMouseDragged="#deltavcostChangedValue" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Importance" wrapText="true" GridPane.columnIndex="3" />
-            <Spinner fx:id="Spinner_moddeltavcost" onMouseClicked="#moddeltavcostChangedValue" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Spinner fx:id="Spinner_moddeltavcost" onMousePressed="#moddeltavcostChangedValue" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="1" max="3" min="0" />
+                </valueFactory>
+            </Spinner>
             <Label text="Minimum TWR" wrapText="true" GridPane.rowIndex="2" />
             <Slider fx:id="Slider_twrmin" blockIncrement="0.5" majorTickUnit="5.0" max="20.0" minorTickCount="4" onMouseDragged="#mintwrChangedValue" showTickLabels="true" showTickMarks="true" GridPane.rowIndex="3" />
             <Label text="Maximum TWR" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Slider fx:id="Slider_twrmax" blockIncrement="0.5" majorTickUnit="5.0" max="20.0" minorTickCount="4" onMouseDragged="#maxtwrChangedValue" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          <Label text="Importance" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Spinner fx:id="Spinner_modtwr" onInputMethodTextChanged="#modcostChangedValue" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Spinner fx:id="Spinner_modtwr" onMousePressed="#modtwrChangedValue" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="1" max="3" min="0" />
+                </valueFactory>
+            </Spinner>
             <Label text="Max number of stages" wrapText="true" GridPane.rowIndex="5" />
-            <Spinner fx:id="Spinner_nbmaxstages" GridPane.rowIndex="6" />
+            <Spinner fx:id="Spinner_nbmaxstages" onMousePressed="#nbmaxstagesChangedValue" GridPane.rowIndex="6">
+                <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="5" max="10" min="0" />
+                </valueFactory>
+            </Spinner>
             <Label text="Max number of fuel tanks/stage" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Spinner fx:id="Spinner_nbmaxft" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Spinner fx:id="Spinner_nbmaxft" onMousePressed="#nbmaxftChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="3" max="10" min="0" />
+                </valueFactory>
+            </Spinner>
             <Button mnemonicParsing="false" onAction="#buttonBuildClicked" prefHeight="50.0" prefWidth="200.0" text="Build" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.rowSpan="2">
             <font>
                <Font size="14.0" />
             </font></Button>
+         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <RadioButton fx:id="Button_BestCost" mnemonicParsing="false" onMouseClicked="#deltavcostClicked" selected="true" text="Best Cost">
+                  <VBox.margin>
+                     <Insets bottom="2.0" top="2.0" />
+                  </VBox.margin>
+               </RadioButton>
+               <RadioButton fx:id="Button_BestDeltaV" mnemonicParsing="false" onMouseClicked="#deltavcostClicked" text="Best DeltaV">
+                  <VBox.margin>
+                     <Insets bottom="2.0" top="2.0" />
+                  </VBox.margin>
+               </RadioButton>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </VBox>
         </GridPane>
       <WebView fx:id="webView" blendMode="MULTIPLY" maxWidth="500.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
       <padding>

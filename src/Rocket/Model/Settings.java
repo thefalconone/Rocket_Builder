@@ -22,6 +22,23 @@ public class Settings {
 		Settings.cost =cost;
 	}
 
+	public Settings(){
+		Settings.ratiokill = .5f;
+		Settings.moddeltav = 1;
+		Settings.modcost = 1;
+		Settings.modtwr = 1;
+		Settings.mintwr = 1;
+		Settings.maxtwr = 5;
+		Settings.payload = 4.32f;
+		Settings.nbpop = 1000;
+		Settings.nbmut = 30;
+		Settings.nbmaxft = 3;
+		Settings.nbmaxstages = 5;
+		Settings.nbgen = 100;
+		Settings.dv = 4000;
+		Settings.cost = 0;
+	}
+
 	@Override
 	public String toString() {
 		return "Settings{" +

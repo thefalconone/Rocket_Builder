@@ -4,7 +4,6 @@ import Rocket.Model.FilesReader;
 import Rocket.Model.Genetic;
 import Rocket.Model.Settings;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,28 +23,21 @@ public class MainWindow extends Application {
 
 	public WebView webView;
 
-	public ChoiceBox<String> DeltaVCostChoice;
+	public RadioButton Button_BestCost;
+	public RadioButton Button_BestDeltaV;
 	public Label DeltaVCost;
 
 	public Spinner<Integer> Spinner_moddeltavcost;
-	public Spinner<Integer> Spinner_modtwr = new Spinner<>(0, 3, Settings.modtwr);
+	public Spinner<Integer> Spinner_modtwr;
 	public Slider Slider_twrmin;
 	public Slider Slider_twrmax;
 
-	public Spinner<Integer> Spinner_nbmaxstages = new Spinner<>(0, 5, Settings.nbmaxstages);
-	public Spinner<Integer> Spinner_nbmaxft = new Spinner<>(0, 5, Settings.nbmaxft);
+	public Spinner<Integer> Spinner_nbmaxstages;
+	public Spinner<Integer> Spinner_nbmaxft;
 	public Slider Slider_deltavcost;
 
 	@Override
 	public void start(javafx.stage.Stage stage) throws IOException {
-
-		DeltaVCostChoice = new ChoiceBox<>(FXCollections.observableArrayList("Best Cost", "Best DeltaV"));
-
-		int modtwr = 1;
-		// Value factory.
-		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 3, modtwr);
-
-		Spinner_modtwr.setValueFactory(valueFactory);
 
 		Parent root = FXMLLoader.load(getClass().getResource("../View/MainWindow.fxml"));
 		stage.setTitle("Rocket Builder");
@@ -83,15 +75,6 @@ public class MainWindow extends Application {
 		webEngine.load(path.toUri().toString());
 	}
 
-	/*public void dvChangedValue() {
-		Settings.maxdv = (int) Slider_dv.getValue();
-		System.out.println("maxdv:"+Settings.maxdv);
-	}*/
-
-	public void modcostChangedValue() {
-		Settings.modcost = Spinner_moddeltavcost.getValue();
-	}
-
 	public void menuFileOptions() throws Exception {
 		Options options = new Options();
 		options.start(new javafx.stage.Stage());
@@ -103,6 +86,12 @@ public class MainWindow extends Application {
 	}
 
 	public void deltavcostChangedValue() {
+		if(Button_BestDeltaV.isSelected()){
+			Settings.cost = (int) Slider_deltavcost.getValue();
+		}
+		else{
+			Settings.dv = (int) Slider_deltavcost.getValue();
+		}
 	}
 
 	public void mintwrChangedValue() {
@@ -112,5 +101,32 @@ public class MainWindow extends Application {
 	}
 
 	public void moddeltavcostChangedValue() {
+		Settings.modcost = Spinner_moddeltavcost.getValue();
+	}
+
+	public void modtwrChangedValue() {
+		Settings.modtwr = Spinner_modtwr.getValue();
+		System.out.println("modtwr:"+Settings.modtwr);
+	}
+
+	public void nbmaxftChangedValue() {
+		Settings.nbmaxstages = Spinner_nbmaxstages.getValue();
+		System.out.println("nbmaxstages:"+Settings.nbmaxstages);
+	}
+
+	public void nbmaxstagesChangedValue() {
+		Settings.nbmaxstages = Spinner_nbmaxstages.getValue();
+		System.out.println("nbmaxstages:"+Settings.nbmaxstages);
+	}
+
+	public void deltavcostClicked() {
+		if(Button_BestCost.isSelected()){
+			Button_BestDeltaV.setSelected(false);
+			DeltaVCost.setText("DeltaV");
+		}
+		else{
+			Button_BestCost.setSelected(false);
+			DeltaVCost.setText("Cost");
+		}
 	}
 }
