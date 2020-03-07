@@ -70,7 +70,7 @@ public class HTML {
 		if(imageFile.exists())
 			html += "	<tr>\n		<td><img src=\"data/Parts/"+e.name+".png\"/></td>\n";
 		else
-			html += "	<tr>\n		<td><img src=\"data/Parts/"+e.name+".webp\"/></td>\n";
+			html += "	<tr>\n		<td><img src=\"data/Parts/"+e.name+".webp.png\"/></td>\n";
 
 		//stats
 		html += "		<td>"+e.name+"<br>	"+e.mass+"t "+e.thrust+"kN	"+e.isp+"s	"+e.cost+"$";
@@ -93,7 +93,7 @@ public class HTML {
 		if(imageFile.exists())
 			html += "	<tr>\n		<td><img src=\"data/Parts/"+ft.name+".png\"/></td>\n";
 		else
-			html += "	<tr>\n		<td><img src=\"data/Parts/"+ft.name+".webp\"/></td>\n";
+			html += "	<tr>\n		<td><img src=\"data/Parts/"+ft.name+".webp.png\"/></td>\n";
 
 		//stats
 		html += "		<td>"+ft.name+"<br>	"+ft.drymass+"t ";

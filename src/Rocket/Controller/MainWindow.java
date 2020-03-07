@@ -2,6 +2,7 @@ package Rocket.Controller;
 
 import Rocket.Model.FilesReader;
 import Rocket.Model.Genetic;
+import Rocket.Model.Rocket;
 import Rocket.Model.Settings;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -59,6 +60,14 @@ public class MainWindow extends Application {
 	public static void main(String[] args) {
 		FilesReader.readAllData();
 		Settings.print();
+		/*Rocket r = new Rocket(Settings.payload);
+		r.randomize();
+		System.out.println(r.toString());
+		System.out.println("dv:"+r.getDeltaV());
+		System.out.println("cost:"+r.getCost());
+		System.out.println("mintwr:"+r.getMinTWR());
+		System.out.println("maxtwr:"+r.getMaxTWR());
+		System.out.println("score:"+r.getScore());*/
 		launch(args);
 	}
 
@@ -71,7 +80,14 @@ public class MainWindow extends Application {
 			if(Files.exists(path))
 				Files.delete(path);
 
-			String content = HTML.createRocketHTML(Genetic.createRocket());
+			Rocket r = Genetic.createRocket();
+			System.out.println(r.toString());
+			System.out.println("dv:"+r.getDeltaV());
+			System.out.println("cost:"+r.getCost());
+			System.out.println("mintwr:"+r.getMinTWR());
+			System.out.println("maxtwr:"+r.getMaxTWR());
+			System.out.println("score:"+r.getScore());
+			String content = HTML.createRocketHTML(r);
 			Files.write(path, content.getBytes(), StandardOpenOption.CREATE_NEW);
 		}
 		catch (IOException e) {

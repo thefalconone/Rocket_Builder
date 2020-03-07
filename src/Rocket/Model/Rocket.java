@@ -46,7 +46,7 @@ public class Rocket {
 			//                                          entre 1 et 4 moteurs
 			Stage newStage = new Stage(ft, e, random.nextInt(4)+1, upperStagesMass);
 			this.addStage(newStage);
-			upperStagesMass += newStage.getTotalMass();
+			upperStagesMass += newStage.getTotalMass() - upperStagesMass;
 		}
 	}
 
@@ -138,13 +138,14 @@ public class Rocket {
 
 		//-----------------MAIN SCORE--------------------
 
-		// ( e^( (-(goal-real)^2)/(goal^2) ) +1 )^2²&
+		//max = 1, min = .01
+		// ( e^( (-(goal-real)^2)/(goal^2) ) +.01 )^2²&
 
 		if(Settings.cost==0) {
 			double upper = -Math.pow(Settings.dv-dv, 2);
 			double lower = Math.pow(Settings.dv, 2);
 			double exp = Math.exp(upper/lower);
-			score = (float) Math.pow(exp+1, Settings.moddeltav);
+			score = (float) Math.pow(exp+.01, Settings.moddeltav);
 
 			score *= Math.pow(1f/cost, Settings.modcost);//penalty to lower cost
 		}
@@ -152,9 +153,9 @@ public class Rocket {
 			double upper = -Math.pow(Settings.cost-cost, 2);
 			double lower = Math.pow(Settings.cost, 2);
 			double exp = Math.exp(upper/lower);
-			score = (float) Math.pow(exp+1, Settings.moddeltav);
+			score = (float) Math.pow(exp+.01, Settings.modcost);
 
-			score *= Math.pow(dv, Settings.modcost);//incentive to raise dv
+			score *= Math.pow(10*dv, Settings.moddeltav);//incentive to raise dv
 		}
 		//printscore(score);
 
