@@ -5,6 +5,7 @@ import Rocket.Model.Genetic;
 import Rocket.Model.Rocket;
 import Rocket.Model.Settings;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -55,6 +56,29 @@ public class MainWindow extends Application {
 	@Override
 	public void stop(){
 		FilesReader.saveSettings();
+	}
+
+	@FXML
+	public void initialize(){
+		if(Settings.cost==0){//best cost
+			Slider_deltavcost.setValue(Settings.dv);
+			Spinner_moddeltavcost.setPromptText(String.valueOf(Settings.moddeltav));
+		}
+		else{
+			Slider_deltavcost.setValue(Settings.cost);
+			Spinner_moddeltavcost.setPromptText(String.valueOf(Settings.modcost));
+			Button_BestDeltaV.setSelected(true);
+			Label_deltavcost.setText("Target Cost : "+ Settings.cost);
+		}
+
+		Slider_mintwr.setValue(Settings.mintwr);
+		mintwrChangedValue();
+		Slider_maxtwr.setValue(Settings.maxtwr);
+		maxtwrChangedValue();
+		Spinner_modtwr.setPromptText(String.valueOf(Settings.modtwr));
+
+		Spinner_nbmaxstages.setPromptText(String.valueOf(Settings.nbmaxstages-1));
+		Spinner_nbmaxft.setPromptText(String.valueOf(Settings.nbmaxft));
 	}
 
 	public static void main(String[] args) {
@@ -160,7 +184,7 @@ public class MainWindow extends Application {
 	}
 
 	public void nbmaxstagesChangedValue() {
-		Settings.nbmaxstages = Spinner_nbmaxstages.getValue();
+		Settings.nbmaxstages = Spinner_nbmaxstages.getValue() +1;
 		//System.out.println("nbmaxstages:"+Settings.nbmaxstages);
 	}
 }

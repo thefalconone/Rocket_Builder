@@ -160,13 +160,12 @@ public class FilesReader {
 				}
 
 				//créé le fichier
-				Files.write(path, ("0.5\n1\n1\n1\n1\n5\n4.32\n1000\n300\n3\n5\n100\n0\n-1\n0\n-1\n").getBytes(), StandardOpenOption.CREATE);
+				Files.write(path, ("0.5\n1\n1\n1\n1\n5\n4.32\n1000\n300\n3\n5\n100\n4000\n0").getBytes(), StandardOpenOption.CREATE);
 			}
 
 			List<String> file = Files.readAllLines(path);
 			ListIterator<String> lines = file.listIterator();
 
-			//new Settings();
 			new Settings(
 					Float.parseFloat(lines.next()),
 					Float.parseFloat(lines.next()),

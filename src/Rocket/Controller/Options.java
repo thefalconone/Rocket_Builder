@@ -13,13 +13,13 @@ import javafx.stage.Stage;
 public class Options extends Application {
 
 	@FXML
-	public Spinner<Integer> Spinner_nbpop = new Spinner<>(0, 10000, Settings.nbpop);
+	public Spinner<Integer> Spinner_nbpop;
 	@FXML
-	public Spinner<Integer> Spinner_ratiokill = new Spinner<>(0, 1, Settings.ratiokill);
+	public Spinner<Integer> Spinner_ratiokill;
 	@FXML
-	public Spinner<Integer> Spinner_nbgen = new Spinner<>(0, 10000, Settings.nbgen);
+	public Spinner<Integer> Spinner_nbgen;
 	@FXML
-	public Spinner<Integer> Spinner_nbmut = new Spinner<>(0, Settings.nbpop, Settings.nbmut);
+	public Spinner<Integer> Spinner_nbmut;
 
 	@Override
 	public void start(Stage stage) throws Exception {

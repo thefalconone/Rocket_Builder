@@ -163,7 +163,7 @@ public class Rocket {
 
 		//not punishing minTWR=0 because score would be 0
 		if(minTWR!=0 && minTWR<Settings.mintwr)
-			score *= 0.01*minTWR;
+			score *= 0.01*minTWR/Settings.mintwr;
 		if(maxTWR!=0 && Settings.maxtwr!=0 && maxTWR>Settings.maxtwr)
 			score *= 0.01*Settings.maxtwr/maxTWR;
 		//printscore(score);

@@ -31,7 +31,7 @@ public class Settings {
 		Settings.maxtwr = 5;
 		Settings.payload = 4.32f;
 		Settings.nbpop = 1000;
-		Settings.nbmut = 30;
+		Settings.nbmut = 300;
 		Settings.nbmaxft = 3;
 		Settings.nbmaxstages = 5;
 		Settings.nbgen = 100;
