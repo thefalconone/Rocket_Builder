@@ -43,8 +43,11 @@ public class Rocket {
 				if (random.nextInt(3) > 0)//66% de chance
 					ft.add(FilesReader.allFuelTanks.get(random.nextInt(allFuelTanksSize)));
 
-			//                                          entre 1 et 4 moteurs
-			Stage newStage = new Stage(ft, e, random.nextInt(4)+1, upperStagesMass);
+			//entre 1 et 4 moteurs
+			//int nbEngines = random.nextInt(4)+1;
+			//aussi décmmenter stage.mutate pour nbengine
+			int nbEngines=1;
+			Stage newStage = new Stage(ft, e, nbEngines, upperStagesMass);
 			this.addStage(newStage);
 			upperStagesMass += newStage.getTotalMass() - upperStagesMass;
 		}
@@ -121,15 +124,14 @@ public class Rocket {
 		return print==1;
 	}
 
-	public void printscore(float score){
+	/*public void printscore(float score){
 		if (canprint())
 		System.out.println(iter++ +" "+ String.format("%.2f", score));
-	}
+	}*/
 
 	public float getScore(){
 
-		int cost = getCost();
-		float dv = getDeltaV(), minTWR=getMinTWR(), maxTWR=getMaxTWR();
+		float dv = getDeltaV(), minTWR=getMinTWR(), maxTWR=getMaxTWR(), cost = getCost();
 		float score;
 
 		//no dividing by 0
@@ -141,21 +143,25 @@ public class Rocket {
 		//max = 1, min = .01
 		// ( e^( (-(goal-real)^2)/(goal^2) ) +.01 )^2²&
 
+		//target dv, best cost
 		if(Settings.cost==0) {
-			double upper = -Math.pow(Settings.dv-dv, 2);
-			double lower = Math.pow(Settings.dv, 2);
-			double exp = Math.exp(upper/lower);
-			score = (float) Math.pow(exp+.01, Settings.moddeltav);
-
-			score *= Math.pow(1f/cost, Settings.modcost);//penalty to lower cost
+			//insufficient dv
+			if(dv<Settings.dv)
+				score = dv/Settings.dv;
+			//sufficient dv
+			else//1=max dv
+				//the lower the cost the higher the score
+				score = 1 + 1000/cost;
 		}
+		//target cost, best dv
 		else {//Setting.dv==0
-			double upper = -Math.pow(Settings.cost-cost, 2);
-			double lower = Math.pow(Settings.cost, 2);
-			double exp = Math.exp(upper/lower);
-			score = (float) Math.pow(exp+.01, Settings.modcost);
-
-			score *= Math.pow(10*dv, Settings.moddeltav);//incentive to raise dv
+			//cost too high
+			if(cost>Settings.cost)
+				score = Settings.cost/cost;
+			//good cost
+			else//1=best cost
+				//the higher the dv the higher the score
+				score = 1 + dv;
 		}
 		//printscore(score);
 
@@ -163,9 +169,9 @@ public class Rocket {
 
 		//not punishing minTWR=0 because score would be 0
 		if(minTWR!=0 && minTWR<Settings.mintwr)
-			score *= 0.01*minTWR/Settings.mintwr;
+			score *= minTWR/Settings.mintwr;
 		if(maxTWR!=0 && Settings.maxtwr!=0 && maxTWR>Settings.maxtwr)
-			score *= 0.01*Settings.maxtwr/maxTWR;
+			score *= Settings.maxtwr/maxTWR;
 		//printscore(score);
 		print--;
 

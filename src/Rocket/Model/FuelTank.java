@@ -14,19 +14,19 @@ public class FuelTank {
 		this.mo=mo;
 	}
 	public float getTotalMass(){
-		return (float) (drymass + lf*0.005 + ox*0.005 + mo*0.004);
+		return drymass + lf*0.005f + ox*0.005f + mo*0.004f;
 	}
 
 	public float getLfMass(){
-		return (float) (lf*0.005);
+		return lf*0.005f;
 	}
 
 	public float getOxMass(){
-		return (float) (ox*0.005);
+		return ox*0.005f;
 	}
 
 	public float getMoMass(){
-		return (float) (mo*0.004);
+		return mo*0.004f;
 	}
 
 	@Override

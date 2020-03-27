@@ -93,7 +93,8 @@ public class Genetic {
 				newPopulation.add(child1);
 				newPopulation.add(child2);
 			}
-			population=newPopulation;
+			if(!newPopulation.isEmpty())
+				population=newPopulation;
 
 			//---------------------MUTATIONS----------------------
 			for(int i=0; i< Settings.nbmut; i++){

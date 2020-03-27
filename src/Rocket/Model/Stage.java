@@ -56,7 +56,7 @@ public class Stage {
 		}
 		else{
 			engine = FilesReader.allEngines.get(random.nextInt(FilesReader.allEngines.size()));
-			nbEngines = random.nextInt(4)+1;
+			//nbEngines = random.nextInt(4)+1;
 		}
 
 	}
@@ -73,12 +73,15 @@ public class Stage {
 
 	private void calculateDryMass(float upperStagesMass){
 
-		dryMass = upperStagesMass + engine.getTotalMass() * nbEngines;
+		dryMass = upperStagesMass + engine.mass * nbEngines;
 
+		//System.out.println("name="+engine.name +" tpye="+ engine.type);
 		switch (engine.type){
 			case liquid://consume lf and ox
-				for(FuelTank f : fuelTanks)
+				for(FuelTank f : fuelTanks) {
+					//System.out.println("dryMass="+dryMass+" totalmass="+f.getTotalMass()+" lf="+f.getLfMass()+" ox="+f.getOxMass());
 					dryMass += f.getTotalMass() - f.getLfMass() - f.getOxMass();
+				}
 				break;
 			case solid://consume nothing
 				for(FuelTank f : fuelTanks)

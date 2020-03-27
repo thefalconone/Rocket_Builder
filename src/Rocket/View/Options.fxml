@@ -57,7 +57,7 @@
 			</Spinner>
 			<Spinner fx:id="Spinner_nbmut" editable="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
 				<valueFactory>
-					<SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="30" max="10000" min="1" />
+					<SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="30" max="10000" min="0" />
 				</valueFactory>
 			</Spinner>
          <padding>

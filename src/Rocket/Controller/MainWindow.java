@@ -105,12 +105,12 @@ public class MainWindow extends Application {
 				Files.delete(path);
 
 			Rocket r = Genetic.createRocket();
-			System.out.println(r.toString());
+			/*System.out.println(r.toString());
 			System.out.println("dv:"+r.getDeltaV());
 			System.out.println("cost:"+r.getCost());
 			System.out.println("mintwr:"+r.getMinTWR());
 			System.out.println("maxtwr:"+r.getMaxTWR());
-			System.out.println("score:"+r.getScore());
+			System.out.println("score:"+r.getScore());*/
 			String content = HTML.createRocketHTML(r);
 			Files.write(path, content.getBytes(), StandardOpenOption.CREATE_NEW);
 		}

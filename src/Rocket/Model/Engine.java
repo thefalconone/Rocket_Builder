@@ -18,9 +18,8 @@ public class Engine {
 		this.ox=ox;
 		this.sf=sf;
 	}
-
 	public float getTotalMass(){
-		return (float) (mass + lf*0.005 + ox*0.005 + sf*0.0075);
+		return mass + lf*0.005f + ox*0.005f + sf*0.004f;
 	}
 
 	@Override
