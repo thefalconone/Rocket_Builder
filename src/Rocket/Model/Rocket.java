@@ -8,11 +8,11 @@ public class Rocket {
 	private ArrayList<Stage> stages;
 	private static Random random = new Random();
 
-	public Rocket(float payloadMass){
+	public Rocket(){
 
 		this.stages = new ArrayList<>();
 
-		Stage payload = new Stage(payloadMass, payloadMass);
+		Stage payload = new Stage(Settings.payload, Settings.payload);
 		stages.add(payload);
 	}
 

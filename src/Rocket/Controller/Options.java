@@ -6,20 +6,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Options extends Application {
 
-	@FXML
-	public Spinner<Integer> Spinner_nbpop;
-	@FXML
-	public Spinner<Integer> Spinner_ratiokill;
-	@FXML
-	public Spinner<Integer> Spinner_nbgen;
-	@FXML
-	public Spinner<Integer> Spinner_nbmut;
+	public TextField textField_nbpop;
+	public TextField textField_nbgen;
+	public TextField textField_ratiokill;
+	public TextField textField_nbmut;
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -27,32 +23,44 @@ public class Options extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("../View/Options.fxml"));
 		stage.setTitle("Options");
 		stage.getIcons().add(new Image("file:icon.png"));
-		stage.setScene(new Scene(root, 600, 300));
+		stage.setScene(new Scene(root, 600, 160));
 		stage.show();
 	}
 
 	@FXML
 	public void initialize(){
-		Spinner_nbpop.setPromptText(String.valueOf(Settings.nbpop));
-		Spinner_ratiokill.setPromptText(String.valueOf(Settings.ratiokill));
-		Spinner_nbgen.setPromptText(String.valueOf(Settings.nbgen));
-		Spinner_nbmut.setPromptText(String.valueOf(Settings.nbmut));
+		textField_nbpop.setText(String.valueOf(Settings.nbpop));
+		textField_nbgen.setText(String.valueOf(Settings.nbgen));
+		textField_ratiokill.setText(String.valueOf((int)(Settings.ratiokill*100)));
+		textField_nbmut.setText(String.valueOf(Settings.nbmut));
 	}
 
 	public void optionsOkPressed() {
-		Settings.nbpop = Spinner_nbpop.getValue();
-		Settings.ratiokill = Spinner_ratiokill.getValue()/100.0f;
-		Settings.nbgen = Spinner_nbgen.getValue();
-		Settings.nbmut = Spinner_nbmut.getValue();
+		Settings.nbpop = Integer.parseInt(textField_nbpop.getText());
+		Settings.ratiokill = Integer.parseInt(textField_ratiokill.getText())/100.0f;
+		Settings.nbgen = Integer.parseInt(textField_nbgen.getText());
+		Settings.nbmut = Integer.parseInt(textField_nbmut.getText());
 
 		Settings.print();
 
-		Stage stage = (Stage) Spinner_ratiokill.getScene().getWindow();
+		Stage stage = (Stage) textField_nbpop.getScene().getWindow();
 		stage.close();
 	}
 
 	public void optionsCancelPressed() {
-		Stage stage = (Stage) Spinner_ratiokill.getScene().getWindow();
+		Stage stage = (Stage) textField_nbpop.getScene().getWindow();
 		stage.close();
+	}
+
+	public void nbpopChanged() {
+	}
+
+	public void nbgenChanged() {
+	}
+
+	public void ratiokillChanged() {
+	}
+
+	public void nbmutChanged() {
 	}
 }

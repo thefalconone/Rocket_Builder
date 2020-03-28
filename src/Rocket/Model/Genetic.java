@@ -13,7 +13,7 @@ public class Genetic {
 
 		//----------CREATING POPULATION OF RANDOM ROCKETS-----------
 		for(int i=0; i<Settings.nbpop; i++){
-			Rocket rocket = new Rocket(Settings.payload);
+			Rocket rocket = new Rocket();
 			rocket.randomize();
 			population.add(rocket);
 		}
@@ -69,8 +69,8 @@ public class Genetic {
 				Rocket individual1 = population.get(score1.getIndex());
 				Rocket individual2 = population.get(score2.getIndex());
 				Rocket individual3 = population.get(score3.getIndex());
-				Rocket child1 = new Rocket(Settings.payload);
-				Rocket child2 = new Rocket(Settings.payload);
+				Rocket child1 = new Rocket();
+				Rocket child2 = new Rocket();
 
 				for(int j=1; j<Settings.nbmaxstages; j++) {
 					if (random.nextInt(2) == 0) {//1 & 2

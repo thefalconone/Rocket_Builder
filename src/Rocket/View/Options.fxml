@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="200.0" minWidth="350.0" prefHeight="250.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rocket.Controller.Options">
+<AnchorPane minHeight="150.0" minWidth="350.0" prefHeight="160.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rocket.Controller.Options">
 	<VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 		<GridPane hgap="10.0" minHeight="80.0" vgap="10.0" VBox.vgrow="ALWAYS">
 			<columnConstraints>
@@ -20,46 +20,14 @@
 			<VBox.margin>
 				<Insets />
 			</VBox.margin>
-			<Label text="Population size" wrapText="true">
-				<padding>
-					<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-				</padding>
-			</Label>
-			<Label text="Number of generations" wrapText="true" GridPane.columnIndex="2">
-				<padding>
-					<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-				</padding>
-			</Label>
-			<Label text="Percentage of individuals killed/generation" wrapText="true" GridPane.rowIndex="1">
-				<padding>
-					<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-				</padding>
-			</Label>
-			<Label text="Number of individuals mutated/generation" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-				<padding>
-					<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-				</padding>
-			</Label>
-			<Spinner fx:id="Spinner_nbpop" editable="true" GridPane.columnIndex="1">
-				<valueFactory>
-					<SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="1000" max="10000" min="1" />
-				</valueFactory>
-			</Spinner>
-			<Spinner fx:id="Spinner_ratiokill" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-				<valueFactory>
-					<SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="50" max="99" min="1" />
-				</valueFactory>
-			</Spinner>
-			<Spinner fx:id="Spinner_nbgen" editable="true" GridPane.columnIndex="3">
-				<valueFactory>
-					<SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="100" max="10000" min="1" />
-				</valueFactory>
-			</Spinner>
-			<Spinner fx:id="Spinner_nbmut" editable="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-				<valueFactory>
-					<SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="30" max="10000" min="0" />
-				</valueFactory>
-			</Spinner>
+			<Label text="Population size" wrapText="true" />
+			<Label text="Number of generations" wrapText="true" GridPane.columnIndex="2" />
+			<Label text="Percentage of individuals killed/generation" wrapText="true" GridPane.rowIndex="1" />
+			<Label text="Number of individuals mutated/generation" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         <TextField fx:id="textField_nbpop" onKeyReleased="#nbpopChanged" GridPane.columnIndex="1" />
+         <TextField fx:id="textField_nbgen" onKeyReleased="#nbgenChanged" GridPane.columnIndex="3" />
+         <TextField fx:id="textField_ratiokill" onKeyReleased="#ratiokillChanged" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <TextField fx:id="textField_nbmut" onKeyReleased="#nbmutChanged" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>

@@ -28,10 +28,10 @@ public class Settings {
 		Settings.modcost = 1;
 		Settings.modtwr = 1;
 		Settings.mintwr = 1;
-		Settings.maxtwr = 5;
+		Settings.maxtwr = 20;
 		Settings.payload = 4.32f;
 		Settings.nbpop = 1000;
-		Settings.nbmut = 300;
+		Settings.nbmut = 1;
 		Settings.nbmaxft = 3;
 		Settings.nbmaxstages = 5;
 		Settings.nbgen = 100;

@@ -42,7 +42,7 @@ public class HTML {
 		else if(Settings.payload==capsule)
 			html += "Mk1-3 Command Pod: "+Settings.payload+" tonnes";//MK3 capsule + heatshield + parachute
 		else if(Settings.payload==reservoir)
-			html += "Rockomax Jumbo-64 Fuel Tank: "+Settings.payload+" tonnes";//Rockomax Jumbo-64 Fuel Tank
+			html += "Jumbo-64 Fuel Tank: "+Settings.payload+" tonnes";//Rockomax Jumbo-64 Fuel Tank
 		else
 			html += "Custom payload:"+Settings.payload+" tonnes";
 
