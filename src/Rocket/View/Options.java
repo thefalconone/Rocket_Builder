@@ -1,4 +1,4 @@
-package Rocket.Controller;
+package Rocket.View;
 
 import Rocket.Model.Settings;
 import javafx.application.Application;
@@ -20,7 +20,7 @@ public class Options extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 
-		Parent root = FXMLLoader.load(getClass().getResource("../View/Options.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Options.fxml"));
 		stage.setTitle("Options");
 		stage.getIcons().add(new Image("file:icon.png"));
 		stage.setScene(new Scene(root, 600, 160));

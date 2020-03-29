@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Rocket_Builder</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="Rocket.Controller.MainWindow" />
+        <option name="appClass" value="Rocket.View.MainWindow" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
         <option name="title" value="" />

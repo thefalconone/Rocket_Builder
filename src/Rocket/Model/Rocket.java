@@ -33,6 +33,7 @@ public class Rocket {
 		for(int i=0; i<nbStages; i++){
 
 			int allEnginesSize = FilesReader.allEngines.size();
+			//PRINTF RANDOM
 			Engine e = FilesReader.allEngines.get(random.nextInt(allEnginesSize));
 
 			ArrayList<FuelTank> ft = new ArrayList<>();
@@ -49,7 +50,7 @@ public class Rocket {
 			int nbEngines=1;
 			Stage newStage = new Stage(ft, e, nbEngines, upperStagesMass);
 			this.addStage(newStage);
-			upperStagesMass += newStage.getTotalMass() - upperStagesMass;
+			upperStagesMass = newStage.getTotalMass();
 		}
 	}
 
@@ -118,17 +119,6 @@ public class Rocket {
 		return maxTWR;
 	}
 
-	private static int print = 1, iter=0;
-
-	private boolean canprint(){
-		return print==1;
-	}
-
-	/*public void printscore(float score){
-		if (canprint())
-		System.out.println(iter++ +" "+ String.format("%.2f", score));
-	}*/
-
 	public float getScore(){
 
 		float dv = getDeltaV(), minTWR=getMinTWR(), maxTWR=getMaxTWR(), cost = getCost();
@@ -139,9 +129,6 @@ public class Rocket {
 			return 0;
 
 		//-----------------MAIN SCORE--------------------
-
-		//max = 1, min = .01
-		// ( e^( (-(goal-real)^2)/(goal^2) ) +.01 )^2²&
 
 		//target dv, best cost
 		if(Settings.cost==0) {
@@ -163,17 +150,14 @@ public class Rocket {
 				//the higher the dv the higher the score
 				score = 1 + dv;
 		}
-		//printscore(score);
 
 		//-----------------PENALTIES---------------------
 
 		//not punishing minTWR=0 because score would be 0
-		if(minTWR!=0 && minTWR<Settings.mintwr)
+		if(minTWR<Settings.mintwr)
 			score *= minTWR/Settings.mintwr;
 		if(maxTWR!=0 && Settings.maxtwr!=0 && maxTWR>Settings.maxtwr)
 			score *= Settings.maxtwr/maxTWR;
-		//printscore(score);
-		print--;
 
 		return score;
 	}

@@ -1,9 +1,6 @@
-package Rocket.Controller;
+package Rocket.View;
 
-import Rocket.Model.FilesReader;
-import Rocket.Model.Genetic;
-import Rocket.Model.Rocket;
-import Rocket.Model.Settings;
+import Rocket.Model.*;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -38,8 +35,8 @@ public class MainWindow extends Application {
 	public Slider Slider_mintwr;
 	public Slider Slider_maxtwr;
 
-	public Spinner<Integer> Spinner_nbmaxstages;
-	public Spinner<Integer> Spinner_nbmaxft;
+	public TextField nbmaxstagesText;
+	public TextField nbmaxftText;
 
 	public TextField payloadText;
 	public ComboBox<String> payloadMenu;
@@ -47,7 +44,7 @@ public class MainWindow extends Application {
 
 	@Override
 	public void start(javafx.stage.Stage stage) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../View/MainWindow.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
 		stage.setTitle("Rocket Builder");
 		stage.getIcons().add(new Image("file:icon.png"));
 		stage.setScene(new Scene(root, 800, 600));
@@ -88,8 +85,8 @@ public class MainWindow extends Application {
 		maxtwrChangedValue();
 
 		//-----------------STAGE AND FT------------------
-		Spinner_nbmaxstages.setPromptText(String.valueOf(Settings.nbmaxstages-1));
-		Spinner_nbmaxft.setPromptText(String.valueOf(Settings.nbmaxft));
+		nbmaxstagesText.setText(String.valueOf(Settings.nbmaxstages-1));
+		nbmaxftText.setText(String.valueOf(Settings.nbmaxft));
 
 		//----------------PAYLOAD-----------------
 		float satellite = (float) (0.02*2 + 0.01 + 0.04), capsule = (float) (2.72 + 1.3 + 0.3), reservoir = (float) 36.0;
@@ -105,6 +102,18 @@ public class MainWindow extends Application {
 				payloadText.setText(String.valueOf(Settings.payload));
 			}
 		};
+
+		int select;
+		if(Settings.payload==satellite)
+			select = 1;
+		else if(Settings.payload==capsule)
+			select = 3;
+		else if(Settings.payload==reservoir)
+			select = 0;
+		else
+			select = 2;
+
+		payloadMenu.getSelectionModel().select(select);
 		payloadMenu.getSelectionModel().selectedItemProperty().addListener(changeListener);
 
 		payloadText.setText(String.valueOf(Settings.payload));
@@ -151,6 +160,8 @@ public class MainWindow extends Application {
 
 		Settings.print();
 		//payload mass fix
+		nbmaxstagesText.setText(String.valueOf(Settings.nbmaxstages));
+		nbmaxftText.setText(String.valueOf(Settings.nbmaxft));
 		payloadText.setText(String.valueOf(Settings.payload));
 	}
 
@@ -200,19 +211,32 @@ public class MainWindow extends Application {
 	}
 
 	public void nbmaxftChangedValue() {
-		Settings.nbmaxft = Spinner_nbmaxft.getValue();
-		//System.out.println("nbmaxft:"+Settings.nbmaxft);
+		String text = nbmaxftText.getText();
+		if(!text.equals("")) {
+			Settings.nbmaxft = Integer.parseInt(text)+1;
+			System.out.println("nbmaxft:"+Settings.nbmaxft);
+		}
+		else{
+			Settings.nbmaxft=1;
+		}
 	}
 
 	public void nbmaxstagesChangedValue() {
-		Settings.nbmaxstages = Spinner_nbmaxstages.getValue() +1;
-		//System.out.println("nbmaxstages:"+Settings.nbmaxstages);
+		String text = nbmaxstagesText.getText();
+		if(!text.equals("")) {
+			Settings.nbmaxstages = Integer.parseInt(text)+1;
+			System.out.println("nbmaxstages:"+Settings.nbmaxstages);
+		}
+		else{
+			Settings.nbmaxstages=1;
+		}
 	}
 
 	public void payloadChanged() {
-		if(!payloadText.getText().equals("")) {
-			Settings.payload = Float.parseFloat(payloadText.getText());
-			System.out.println(Settings.payload);
+		String text = payloadText.getText();
+		if(!text.equals("")) {
+			Settings.payload = Float.parseFloat(text);
+			System.out.println("payload:"+Settings.payload);
 		}
 		else{
 			Settings.payload=0f;

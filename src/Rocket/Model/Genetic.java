@@ -35,7 +35,8 @@ public class Genetic {
 
 			scores.sort(new ScoreSorter());
 			Score bestScore = scores.get(Settings.nbpop-1);
-			System.out.println(String.format("%.2e", bestScore.getScore()));
+			if(generation%1==0)
+				System.out.println("Gen:"+generation+String.format("    score:%.2e", bestScore.getScore()));
 			bestRocket = population.get(bestScore.getIndex());
 
 			//----------------------SELECTION----------------------
@@ -96,6 +97,7 @@ public class Genetic {
 			if(!newPopulation.isEmpty())
 				population=newPopulation;
 
+			afficher(population);
 			//---------------------MUTATIONS----------------------
 			for(int i=0; i< Settings.nbmut; i++){
 				Rocket individual = population.get(random.nextInt(Settings.nbpop));
@@ -104,5 +106,11 @@ public class Genetic {
 		}
 
 		return bestRocket;
+	}
+
+	private static void afficher(ArrayList<Rocket> population){
+		for(Rocket rocket : population){
+			System.out.println(rocket.toString());
+		}
 	}
 }

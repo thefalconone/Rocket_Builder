@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<AnchorPane minHeight="298.0" minWidth="192.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rocket.Controller.MainWindow">
+<AnchorPane minHeight="298.0" minWidth="192.0" prefHeight="500.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rocket.View.MainWindow">
 	<MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 		<Menu mnemonicParsing="false" text="File">
 			<MenuItem mnemonicParsing="false" text="Save Rocket" />
@@ -41,17 +41,7 @@
             <Label fx:id="Label_maxtwr" text="Minimum TWR : 5" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Slider fx:id="Slider_maxtwr" blockIncrement="0.1" majorTickUnit="5.0" max="20.0" minorTickCount="4" onKeyPressed="#maxtwrChangedValue" onMouseDragged="#maxtwrChangedValue" prefWidth="1000.0" showTickLabels="true" showTickMarks="true" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Max number of stages" wrapText="true" GridPane.rowIndex="4" />
-            <Spinner fx:id="Spinner_nbmaxstages" onKeyPressed="#nbmaxstagesChangedValue" onMousePressed="#nbmaxstagesChangedValue" prefWidth="200.0" GridPane.rowIndex="5">
-                <valueFactory>
-                    <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="5" max="10" min="1" />
-                </valueFactory>
-            </Spinner>
             <Label text="Max number of fuel tanks/stage" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Spinner fx:id="Spinner_nbmaxft" onKeyPressed="#nbmaxftChangedValue" onMousePressed="#nbmaxftChangedValue" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                <valueFactory>
-                    <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="3" max="10" min="1" />
-                </valueFactory>
-            </Spinner>
             <Button mnemonicParsing="false" onAction="#buttonBuildClicked" prefHeight="50.0" prefWidth="200.0" text="Build" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
             <font>
                <Font size="14.0" />
@@ -62,8 +52,10 @@
             </toggleGroup>
          </RadioButton>
          <RadioButton fx:id="Button_BestDeltaV" mnemonicParsing="false" onMouseReleased="#deltavcostChangedValue" text="Best DeltaV" toggleGroup="$toggleGroup" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-         <TextField fx:id="payloadText" onKeyReleased="#payloadChanged" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-         <ComboBox fx:id="payloadMenu" prefWidth="150.0" GridPane.rowIndex="6" />
+         <TextField fx:id="payloadText" onKeyReleased="#payloadChanged" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <ComboBox fx:id="payloadMenu" prefWidth="200.0" GridPane.rowIndex="6" />
+         <TextField fx:id="nbmaxstagesText" onKeyReleased="#nbmaxstagesChangedValue" GridPane.rowIndex="5" />
+         <TextField fx:id="nbmaxftText" onKeyReleased="#nbmaxftChangedValue" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         </GridPane>
       <WebView fx:id="webView" blendMode="MULTIPLY" minHeight="200.0" minWidth="200.0" prefHeight="300.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
       <padding>
